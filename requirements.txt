@@ -1,0 +1,11 @@
+fastapi
+uvicorn[standard]
+pydantic[email]
+sqlalchemy
+pymysql
+passlib[bcrypt]
+python-jose[cryptography]
+python-dotenv
+pandas
+slowapi
+scikit-learn==1.8.0
