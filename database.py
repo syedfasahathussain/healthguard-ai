@@ -1,13 +1,8 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, declarative_base
-import os
-from dotenv import load_dotenv
 
-load_dotenv()
-DATABASE_URL = os.getenv(
-    "DATABASE_URL", 
-    "mysql+pymysql://root:motivate321@localhost:3306/insurance_app" # 👈 Localhost Fallback
-)
+DATABASE_URL = "mysql+pymysql://root:motivate321@localhost:3306/insurance_app" # 👈 Localhost Fallback
+
 #DATABASE_URL = "mysql+pymysql://root:motivate321@localhost:3306/insurance_app"
 
 engine = create_engine(
