@@ -297,7 +297,7 @@
 
     <!-- JAVASCRIPT -->
     <script>
-        const API_URL = "https://9fae07a9314047.lhr.life"; // 👈 Live Tunnel URL
+        const API_URL = "https://cheddar-greedless-vista.ngrok-free.dev"; // 👈 Live Tunnel URL
 
         window.onload = function() {
             updateUserStatus();
@@ -388,7 +388,8 @@
             try {
                 const res = await fetch(`${API_URL}/login`, {
                     method: "POST",
-                    headers: { "Content-Type": "application/json" },
+                    headers: { "Content-Type": "application/json",
+    "ngrok-skip-browser-warning": "true" },
                     body: JSON.stringify({ email, password })
                 });
 
