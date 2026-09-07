@@ -5,18 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HealthGuard AI — Precision Underwriting Platform</title>
 
-    <!-- GOOGLE FONTS (Manrope + Inter) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
-
-    <!-- TAILWIND CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- FONTAWESOME OUTLINE ICONS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-    <!-- GSAP ANIMATION ENGINE -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
     <script>
@@ -29,16 +22,9 @@
                     },
                     colors: {
                         medical: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            500: '#0284c7',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
+                            50: '#f0f9ff', 100: '#e0f2fe', 500: '#0284c7', 600: '#2563eb', 700: '#1d4ed8',
                         },
-                        emerald: {
-                            500: '#10b981',
-                            600: '#059669',
-                        }
+                        emerald: { 500: '#10b981', 600: '#059669' }
                     }
                 }
             }
@@ -55,11 +41,9 @@
 </head>
 <body class="bg-slate-50 text-slate-700 antialiased min-h-full flex flex-col bg-grid-pattern">
 
-    <!-- TOP NAVIGATION BAR -->
+    <!-- NAVBAR -->
     <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200/80">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            
-            <!-- BRAND LOGO -->
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-indigo-600 flex items-center justify-center text-white shadow-md shadow-blue-500/20">
                     <i class="fa-solid fa-shield-halved text-lg"></i>
@@ -73,18 +57,16 @@
                 </div>
             </div>
 
-            <!-- COMPLIANCE TRUST BADGE -->
             <div class="hidden md:flex items-center gap-2 px-3 py-1.5 bg-emerald-50 border border-emerald-200/60 rounded-full text-xs font-medium text-emerald-700">
                 <i class="fa-solid fa-circle-check text-emerald-500"></i>
                 <span>HIPAA & SOC-2 Compliant Architecture</span>
             </div>
 
-            <!-- USER STATUS PILL -->
             <div id="user-status-container" class="flex items-center gap-3"></div>
         </div>
     </nav>
 
-    <!-- TABS BAR CONTAINER -->
+    <!-- TABS BAR -->
     <div class="bg-white border-b border-slate-200/80">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex space-x-1 sm:space-x-4 overflow-x-auto py-2">
             <button onclick="switchTab('login')" id="tab-login-btn" class="px-4 py-2.5 rounded-xl text-sm font-semibold transition-all flex items-center gap-2 text-blue-600 bg-blue-50 border border-blue-100">
@@ -99,20 +81,18 @@
             <button onclick="switchTab('history')" id="tab-history-btn" class="px-4 py-2.5 rounded-xl text-sm font-semibold text-slate-500 hover:text-slate-900 transition-all flex items-center gap-2">
                 <i class="fa-regular fa-clock text-base"></i> Audit History
             </button>
-            <!-- 👑 ADMIN TAB (DEFAULT HIDDEN) -->
             <button onclick="switchTab('admin')" id="tab-admin-btn" class="hidden px-4 py-2.5 rounded-xl text-sm font-semibold text-amber-600 bg-amber-50 border border-amber-200/60 hover:bg-amber-100 transition-all flex items-center gap-2">
                 <i class="fa-solid fa-shield-cat text-base"></i> Admin Console
             </button>
         </div>
     </div>
 
-    <!-- MAIN BODY CONTENT -->
+    <!-- MAIN BODY -->
     <main class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full flex-grow">
 
-        <!-- NOTIFICATION BANNER -->
         <div id="alert-box" class="hidden mb-6 p-4 rounded-2xl border text-sm font-medium flex items-center justify-between shadow-sm transition-all"></div>
 
-        <!-- 1. LOGIN SECTION -->
+        <!-- 1. LOGIN -->
         <section id="section-login" class="tab-content max-w-md mx-auto">
             <div class="bg-white border border-slate-200/80 rounded-2xl p-8 shadow-sm">
                 <div class="mb-6">
@@ -122,17 +102,11 @@
                 <form onsubmit="handleLogin(event)" class="space-y-4">
                     <div>
                         <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">Work Email Address</label>
-                        <div class="relative">
-                            <i class="fa-regular fa-envelope absolute left-3.5 top-3.5 text-slate-400"></i>
-                            <input type="email" id="login-email" required class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-sm font-medium text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all" placeholder="underwriter@insurance.com">
-                        </div>
+                        <input type="email" id="login-email" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all" placeholder="underwriter@insurance.com">
                     </div>
                     <div>
                         <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">Account Password</label>
-                        <div class="relative">
-                            <i class="fa-solid fa-lock absolute left-3.5 top-3.5 text-slate-400"></i>
-                            <input type="password" id="login-password" required class="w-full bg-slate-50 border border-slate-200 rounded-xl pl-10 pr-4 py-2.5 text-sm font-medium text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all" placeholder="••••••••">
-                        </div>
+                        <input type="password" id="login-password" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all" placeholder="••••••••">
                     </div>
                     <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl transition-all shadow-md shadow-blue-500/10 flex items-center justify-center gap-2">
                         <span>Sign In to Dashboard</span>
@@ -142,7 +116,7 @@
             </div>
         </section>
 
-        <!-- 2. SIGNUP SECTION -->
+        <!-- 2. SIGNUP -->
         <section id="section-signup" class="tab-content hidden max-w-md mx-auto">
             <div class="bg-white border border-slate-200/80 rounded-2xl p-8 shadow-sm">
                 <div class="mb-6">
@@ -161,7 +135,6 @@
                     <div>
                         <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">Secure Password</label>
                         <input type="password" id="signup-password" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-medium text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all" placeholder="••••••••">
-                        <p class="text-[11px] text-slate-400 mt-1">Must contain 8+ chars, 1 uppercase, 1 number & 1 symbol.</p>
                     </div>
                     <button type="submit" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-3 rounded-xl transition-all shadow-md shadow-emerald-500/10 flex items-center justify-center gap-2">
                         <span>Create Account</span>
@@ -171,9 +144,8 @@
             </div>
         </section>
 
-        <!-- 3. PREDICT SECTION (PROTECTED) -->
+        <!-- 3. PREDICT (PROTECTED) -->
         <section id="section-predict" class="tab-content hidden">
-            
             <div id="predict-unauthorized-msg" class="max-w-md mx-auto bg-white border border-slate-200/80 rounded-2xl p-10 text-center shadow-sm">
                 <div class="w-12 h-12 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center mx-auto mb-4 border border-amber-200/60">
                     <i class="fa-solid fa-lock text-xl"></i>
@@ -186,50 +158,46 @@
             <div id="predict-form-container" class="hidden">
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     
-                    <!-- INPUT FORM COLUMN (2 COLS) -->
+                    <!-- INPUT FORM (2 COLS) -->
                     <div class="lg:col-span-2 bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-8 shadow-sm">
                         <div class="flex items-center justify-between pb-6 mb-6 border-b border-slate-100">
                             <div>
                                 <h2 class="text-2xl font-bold text-slate-900 font-heading">Patient Health & Financial Parameters</h2>
-                                <p class="text-sm text-slate-500 mt-1">Input data is processed through our XGBoost actuarial classification model.</p>
+                                <p class="text-sm text-slate-500 mt-1">Input data is processed through XGBoost Actuarial & Groq Llama-3.3 Models.</p>
                             </div>
-                            <span class="hidden sm:inline-flex items-center gap-1.5 text-xs font-semibold bg-blue-50 text-blue-700 px-3 py-1 rounded-full border border-blue-200">
-                                <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
-                                Model v1.4 Active
-                            </span>
                         </div>
 
                         <form onsubmit="handlePredict(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-5">
                             <div>
                                 <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">Age (Years)</label>
-                                <input type="number" id="pred-age" min="1" max="119" value="30" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all">
+                                <input type="number" id="pred-age" min="1" max="119" value="30" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-800">
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">Body Weight (kg)</label>
-                                <input type="number" step="0.1" id="pred-weight" value="65.0" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all">
+                                <input type="number" step="0.1" id="pred-weight" value="65.0" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-800">
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">Height (Meters)</label>
-                                <input type="number" step="0.01" id="pred-height" value="1.70" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all">
+                                <input type="number" step="0.01" id="pred-height" value="1.70" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-800">
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">Annual Income (LPA)</label>
-                                <input type="number" step="0.1" id="pred-income" value="10.0" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all">
+                                <input type="number" step="0.1" id="pred-income" value="10.0" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-800">
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">Tobacco Usage (Smoker)</label>
-                                <select id="pred-smoker" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all">
+                                <select id="pred-smoker" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-800">
                                     <option value="false">Non-Smoker (No Tobacco)</option>
                                     <option value="true">Active Smoker</option>
                                 </select>
                             </div>
                             <div>
                                 <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">Residential Tier City</label>
-                                <input type="text" id="pred-city" value="Mumbai" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all">
+                                <input type="text" id="pred-city" value="Mumbai" required class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-800">
                             </div>
                             <div class="sm:col-span-2">
                                 <label class="block text-xs font-semibold uppercase tracking-wider text-slate-500 mb-1.5">Primary Occupation</label>
-                                <select id="pred-occupation" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-600 transition-all">
+                                <select id="pred-occupation" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-800">
                                     <option value="private_job">Private Corporate Sector</option>
                                     <option value="government_job">Government Officer</option>
                                     <option value="business_owner">Business Enterprise Owner</option>
@@ -242,12 +210,12 @@
 
                             <button type="submit" class="sm:col-span-2 mt-4 bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 rounded-xl transition-all shadow-lg shadow-blue-500/10 flex items-center justify-center gap-2 text-base">
                                 <i class="fa-solid fa-microchip"></i>
-                                <span>Execute Premium Assessment</span>
+                                <span>Execute Premium Assessment & AI Advice</span>
                             </button>
                         </form>
                     </div>
 
-                    <!-- SIDEBAR RESULT COLUMN (1 COL) -->
+                    <!-- SIDEBAR RESULT & GROQ AI ADVICE COLUMN (1 COL) -->
                     <div class="space-y-6">
                         
                         <!-- DEFAULT STATE CARD -->
@@ -256,34 +224,35 @@
                                 <i class="fa-solid fa-chart-pie text-2xl"></i>
                             </div>
                             <h3 class="text-base font-bold text-slate-800 font-heading">Ready for Inference</h3>
-                            <p class="text-xs text-slate-400 mt-2">Fill the patient parameters and submit to generate real-time actuarial risk output.</p>
+                            <p class="text-xs text-slate-400 mt-2">Fill patient parameters to generate ML prediction & AI clinical advice.</p>
                         </div>
 
-                        <!-- RESULT CARD (HIDDEN INITIALLY) -->
-                        <div id="result-card" class="hidden bg-gradient-to-b from-slate-900 to-slate-950 text-white border border-slate-800 rounded-2xl p-8 shadow-xl relative overflow-hidden">
-                            <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 rounded-full blur-2xl"></div>
+                        <!-- RESULT & GROQ AI ADVICE CARD (HIDDEN INITIALLY) -->
+                        <div id="result-card" class="hidden space-y-6">
                             
-                            <span class="text-[10px] font-bold tracking-widest text-emerald-400 uppercase bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
-                                Inference Complete
-                            </span>
+                            <!-- ML PREDICTION CATEGORY BOX -->
+                            <div class="bg-gradient-to-b from-slate-900 to-slate-950 text-white border border-slate-800 rounded-2xl p-6 shadow-xl relative overflow-hidden">
+                                <span class="text-[10px] font-bold tracking-widest text-emerald-400 uppercase bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full">
+                                    Inference Complete
+                                </span>
 
-                            <div class="mt-6 mb-8 text-center">
-                                <p class="text-xs text-slate-400 font-medium uppercase tracking-wider">Predicted Premium Category</p>
-                                <h3 id="result-category" class="text-4xl font-extrabold text-blue-400 mt-2 font-heading">Medium</h3>
-                            </div>
-
-                            <div class="space-y-3 pt-6 border-t border-slate-800 text-xs text-slate-300">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-slate-400">Database Record ID:</span>
-                                    <span id="result-db-id" class="font-bold text-white">#8</span>
-                                </div>
-                                <div class="flex justify-between items-center">
-                                    <span class="text-slate-400">Underwriting Status:</span>
-                                    <span class="text-emerald-400 font-semibold flex items-center gap-1">
-                                        <i class="fa-solid fa-circle-check text-[10px]"></i> Logged to SQL
-                                    </span>
+                                <div class="mt-4 mb-4 text-center">
+                                    <p class="text-xs text-slate-400 font-medium uppercase tracking-wider">Predicted Premium Category</p>
+                                    <h3 id="result-category" class="text-3xl font-extrabold text-blue-400 mt-1 font-heading">Medium</h3>
                                 </div>
                             </div>
+
+                            <!-- 🤖 GROQ AI CLINICAL ADVICE BOX (NEW!) -->
+                            <div id="ai-advice-box" class="bg-white border border-blue-200 rounded-2xl p-6 shadow-sm space-y-3">
+                                <div class="flex items-center gap-2 text-blue-700 font-bold text-sm font-heading pb-2 border-b border-slate-100">
+                                    <i class="fa-solid fa-brain text-blue-600"></i>
+                                    <span>AI Clinical Recommendation (Few-Shot Prompted)</span>
+                                </div>
+                                <div id="ai-advice-text" class="text-xs text-slate-600 whitespace-pre-line leading-relaxed font-sans">
+                                    <!-- Dynamic Groq AI Advice Rendered Here -->
+                                </div>
+                            </div>
+
                         </div>
 
                     </div>
@@ -291,7 +260,7 @@
             </div>
         </section>
 
-        <!-- 4. MY HISTORY SECTION -->
+        <!-- 4. MY HISTORY -->
         <section id="section-history" class="tab-content hidden max-w-4xl mx-auto">
             <div class="bg-white border border-slate-200/80 rounded-2xl p-6 sm:p-8 shadow-sm">
                 <div class="flex items-center justify-between pb-6 mb-6 border-b border-slate-100">
@@ -299,11 +268,8 @@
                         <h2 class="text-2xl font-bold text-slate-900 font-heading">Personal Audit Log</h2>
                         <p class="text-sm text-slate-500 mt-1">Historical list of insurance risk inferences under your account.</p>
                     </div>
-                    <button onclick="fetchHistory()" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold px-4 py-2 rounded-xl transition-all flex items-center gap-1.5">
-                        <i class="fa-solid fa-arrows-rotate text-xs"></i> Refresh Log
-                    </button>
+                    <button onclick="fetchHistory()" class="text-xs bg-slate-100 text-slate-700 font-semibold px-4 py-2 rounded-xl">Refresh Log</button>
                 </div>
-
                 <div id="history-list" class="space-y-3"></div>
             </div>
         </section>
@@ -318,34 +284,20 @@
                         </div>
                         <div>
                             <h2 class="text-2xl font-bold text-slate-900 font-heading">Enterprise System Analytics</h2>
-                            <p class="text-sm text-slate-500">Cross-organization underwriting records inspection.</p>
                         </div>
                     </div>
-                    <button onclick="fetchAdminData()" class="text-xs bg-amber-50 hover:bg-amber-100 text-amber-800 font-semibold px-4 py-2 rounded-xl border border-amber-200/60 transition-all flex items-center gap-1.5">
-                        <i class="fa-solid fa-rotate-right text-xs"></i> Fetch All System Records
-                    </button>
+                    <button onclick="fetchAdminData()" class="text-xs bg-amber-50 text-amber-800 font-semibold px-4 py-2 rounded-xl border border-amber-200/60">Fetch All Records</button>
                 </div>
-
-                <div id="admin-stats" class="mb-6 p-4 bg-amber-50/60 border border-amber-200/60 rounded-xl text-amber-900 text-sm font-semibold flex items-center justify-between">
-                    <span>Loading Analytics...</span>
-                </div>
-
+                <div id="admin-stats" class="mb-6 p-4 bg-amber-50/60 border border-amber-200/60 rounded-xl text-amber-900 text-sm font-semibold">Loading Analytics...</div>
                 <div id="admin-predictions-list" class="space-y-3"></div>
             </div>
         </section>
 
     </main>
 
-    <!-- FOOTER -->
-    <footer class="bg-white border-t border-slate-200/80 py-6 mt-auto">
-        <div class="max-w-6xl mx-auto px-4 text-center text-xs text-slate-400">
-            <p>HealthGuard AI Actuarial Intelligence System • End-to-End Encrypted Architecture</p>
-        </div>
-    </footer>
-
-    <!-- JAVASCRIPT ENGINE -->
+    <!-- JAVASCRIPT -->
     <script>
-        const API_URL = "https://c65952a840d378.lhr.life";
+        const API_URL = "https://ace4281d536e9a.lhr.life"; // 👈 Live Tunnel URL
 
         window.onload = function() {
             updateUserStatus();
@@ -354,7 +306,6 @@
         function showAlert(msg, type = "error") {
             const box = document.getElementById("alert-box");
             box.classList.remove("hidden", "bg-red-50", "border-red-200", "text-red-700", "bg-emerald-50", "border-emerald-200", "text-emerald-700");
-            
             if(type === "error") {
                 box.classList.add("bg-red-50", "border-red-200", "text-red-700");
                 box.innerHTML = `<i class="fa-solid fa-circle-exclamation mr-2"></i> ${msg}`;
@@ -362,7 +313,6 @@
                 box.classList.add("bg-emerald-50", "border-emerald-200", "text-emerald-700");
                 box.innerHTML = `<i class="fa-solid fa-circle-check mr-2"></i> ${msg}`;
             }
-
             gsap.fromTo(box, { opacity: 0, y: -10 }, { opacity: 1, y: 0, duration: 0.3 });
         }
 
@@ -372,12 +322,9 @@
 
         function switchTab(tab) {
             hideAlert();
-            
-            // Tab Buttons UI Update
             ['login', 'signup', 'predict', 'history', 'admin'].forEach(t => {
                 const section = document.getElementById(`section-${t}`);
                 if (section) section.classList.add("hidden");
-
                 const btn = document.getElementById(`tab-${t}-btn`);
                 if (btn) {
                     btn.classList.remove("text-blue-600", "bg-blue-50", "border", "border-blue-100");
@@ -385,7 +332,6 @@
                 }
             });
 
-            // Show Selected Tab
             const activeSection = document.getElementById(`section-${tab}`);
             if (activeSection) {
                 activeSection.classList.remove("hidden");
@@ -398,11 +344,8 @@
                 activeBtn.classList.add("text-blue-600", "bg-blue-50", "border", "border-blue-100");
             }
 
-            if(tab === 'history' && localStorage.getItem("token")) {
-                fetchHistory();
-            } else if(tab === 'admin' && localStorage.getItem("token")) {
-                fetchAdminData();
-            }
+            if(tab === 'history' && localStorage.getItem("token")) fetchHistory();
+            else if(tab === 'admin' && localStorage.getItem("token")) fetchAdminData();
         }
 
         function updateUserStatus() {
@@ -418,25 +361,18 @@
                             <span class="block text-xs font-bold text-slate-800">${email}</span>
                             <span class="block text-[10px] font-semibold tracking-wider text-slate-400 uppercase">${role || 'user'}</span>
                         </div>
-                        <button onclick="handleLogout()" class="text-xs bg-slate-100 hover:bg-slate-200 text-slate-700 px-3 py-2 rounded-xl font-semibold transition-all border border-slate-200 flex items-center gap-1.5">
-                            <i class="fa-solid fa-arrow-right-from-bracket"></i> Logout
+                        <button onclick="handleLogout()" class="text-xs bg-slate-100 text-slate-700 px-3 py-2 rounded-xl font-semibold border border-slate-200">
+                            Logout
                         </button>
                     </div>
                 `;
                 document.getElementById("predict-unauthorized-msg").classList.add("hidden");
                 document.getElementById("predict-form-container").classList.remove("hidden");
 
-                if (role === "admin") {
-                    document.getElementById("tab-admin-btn").classList.remove("hidden");
-                } else {
-                    document.getElementById("tab-admin-btn").classList.add("hidden");
-                }
+                if (role === "admin") document.getElementById("tab-admin-btn").classList.remove("hidden");
+                else document.getElementById("tab-admin-btn").classList.add("hidden");
             } else {
-                container.innerHTML = `
-                    <span class="text-xs font-semibold bg-slate-100 border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full flex items-center gap-1.5">
-                        <i class="fa-solid fa-lock text-[10px]"></i> Unauthenticated Session
-                    </span>
-                `;
+                container.innerHTML = `<span class="text-xs font-semibold bg-slate-100 border border-slate-200 text-slate-600 px-3 py-1.5 rounded-full"><i class="fa-solid fa-lock text-[10px]"></i> Unauthenticated</span>`;
                 document.getElementById("predict-unauthorized-msg").classList.remove("hidden");
                 document.getElementById("predict-form-container").classList.add("hidden");
                 document.getElementById("tab-admin-btn").classList.add("hidden");
@@ -490,7 +426,7 @@
 
                 const data = await res.json();
                 if (res.ok) {
-                    showAlert("Practitioner Profile Registered! Check your email for welcome dispatch.", "success");
+                    showAlert("Registration Successful! Check your email.", "success");
                     setTimeout(() => switchTab('login'), 1200);
                 } else {
                     let msg = data.detail;
@@ -568,18 +504,21 @@
                     card.classList.remove("hidden");
                     
                     document.getElementById("result-category").innerText = data.predicted_category;
-                    if(data.history_id) document.getElementById("result-db-id").innerText = `#${data.history_id}`;
 
-                    // GSAP ANIMATION ON RESULT
+                    // 🤖 DISPLAY GROQ AI CLINICAL ADVICE!
+                    if (data.ai_clinical_advice) {
+                        document.getElementById("ai-advice-text").innerText = data.ai_clinical_advice;
+                    }
+
                     gsap.fromTo(card, { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.5, ease: "back.out(1.7)" });
 
-                    showAlert("Actuarial prediction calculated and stored in DB!", "success");
+                    showAlert("Prediction generated & Groq AI clinical advice loaded!", "success");
                 } else {
                     const data = await res.json();
-                    showAlert(data.detail || "Prediction Processing Failed");
+                    showAlert(data.detail || "Prediction Failed");
                 }
             } catch (err) {
-                showAlert("Error connecting to machine learning inference pipeline!");
+                showAlert("Error connecting to FastAPI ML & Groq AI pipeline!");
             }
         }
 
@@ -599,20 +538,16 @@
                 const data = await res.json();
                 if (res.ok) {
                     if (data.length === 0) {
-                        listContainer.innerHTML = `<div class="p-8 text-center bg-slate-50 border border-slate-200 rounded-xl text-slate-500 text-sm">No historical inference records found under your account.</div>`;
+                        listContainer.innerHTML = `<div class="p-8 text-center bg-slate-50 border border-slate-200 rounded-xl text-slate-500 text-sm">No historical inference records found.</div>`;
                         return;
                     }
 
                     listContainer.innerHTML = data.map(item => `
-                        <div class="p-4 bg-slate-50 border border-slate-200/80 rounded-xl flex items-center justify-between text-xs text-slate-600 hover:bg-white hover:shadow-sm transition-all">
-                            <div class="space-y-1">
-                                <div class="flex items-center gap-2">
-                                    <span class="font-bold text-blue-600 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-md">ID #${item.id}</span>
-                                    <span class="font-bold text-slate-800">${item.city} • ${item.occupation}</span>
-                                </div>
-                                <p class="text-[11px] text-slate-400">
-                                    Age: ${item.age} yrs | Weight: ${item.weight}kg | Height: ${item.height}m | Income: ${item.income_lpa} LPA | Smoker: ${item.smoker ? "Yes" : "No"}
-                                </p>
+                        <div class="p-4 bg-slate-50 border border-slate-200/80 rounded-xl flex items-center justify-between text-xs text-slate-600">
+                            <div>
+                                <span class="font-bold text-blue-600 bg-blue-50 border border-blue-100 px-2 py-0.5 rounded-md">ID #${item.id}</span>
+                                <span class="font-bold text-slate-800 ml-1">${item.city} • ${item.occupation}</span>
+                                <p class="text-[11px] text-slate-400 mt-1">Age: ${item.age} yrs | Weight: ${item.weight}kg | Smoker: ${item.smoker ? "Yes" : "No"}</p>
                             </div>
                             <div class="text-right">
                                 <span class="text-[10px] uppercase tracking-wider text-slate-400 font-semibold block">Category</span>
@@ -620,9 +555,6 @@
                             </div>
                         </div>
                     `).join('');
-
-                } else {
-                    showAlert("Failed to load audit history.");
                 }
             } catch (err) {
                 showAlert("Error connecting to server for audit history.");
@@ -635,7 +567,6 @@
 
             const listContainer = document.getElementById("admin-predictions-list");
             const statsBox = document.getElementById("admin-stats");
-            listContainer.innerHTML = `<p class="text-slate-400 text-xs">Querying enterprise database records...</p>`;
 
             try {
                 const res = await fetch(`${API_URL}/admin/all-predictions`, {
@@ -650,33 +581,17 @@
                 }
 
                 const data = await res.json();
-
                 if (res.ok) {
-                    statsBox.innerHTML = `
-                        <span>📊 Total System Inferences Logged: <b>${data.total_system_predictions} Records</b></span>
-                        <span class="text-xs bg-amber-200/60 px-2.5 py-1 rounded-md text-amber-900">Admin Mode Active</span>
-                    `;
-
-                    if (data.all_records.length === 0) {
-                        listContainer.innerHTML = `<div class="p-8 text-center bg-slate-50 border border-slate-200 rounded-xl text-slate-500 text-sm">No cross-organization records found.</div>`;
-                        return;
-                    }
-
+                    statsBox.innerHTML = `📊 Total Inferences Logged: <b>${data.total_system_predictions} Records</b>`;
                     listContainer.innerHTML = data.all_records.map(item => `
-                        <div class="p-4 bg-slate-50 border border-slate-200/80 rounded-xl flex items-center justify-between text-xs text-slate-700">
+                        <div class="p-4 bg-slate-50 border border-slate-200/80 rounded-xl flex items-center justify-between text-xs">
                             <div>
-                                <span class="font-bold text-amber-700 bg-amber-100/60 border border-amber-200 px-2 py-0.5 rounded-md">Record #${item.id}</span>
-                                <span class="ml-2 font-bold text-slate-800">User ID #${item.user_id}</span>
-                                <span class="text-slate-400 ml-2">| ${item.city} | Smoker: ${item.smoker ? "Yes" : "No"}</span>
+                                <span class="font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded-md">Record #${item.id}</span>
+                                <span class="ml-2 font-bold">User ID #${item.user_id}</span>
                             </div>
-                            <div class="text-right">
-                                <span class="text-[10px] text-slate-400 block uppercase tracking-wider font-semibold">Predicted</span>
-                                <span class="font-bold text-blue-700 text-sm">${item.predicted_category}</span>
-                            </div>
+                            <span class="font-bold text-blue-700 text-sm">${item.predicted_category}</span>
                         </div>
                     `).join('');
-                } else {
-                    showAlert("Failed to load admin telemetry.");
                 }
             } catch (err) {
                 showAlert("Error querying enterprise database!");

@@ -18,7 +18,7 @@ from fastapi import FastAPI, Request # 👈 'Request' import hona zaroori hai!
 from slowapi import Limiter, _rate_limit_exceeded_handler
 from slowapi.util import get_remote_address
 from slowapi.errors import RateLimitExceeded
-
+from utils import generate_ai_health_advice
 
 with open('model1.pkl', 'rb') as f:
  model1 = pickle.load(f)
@@ -246,7 +246,13 @@ def predict_premium(request: Request,data: User_input, current_user: User = Depe
     }])
 
     prediction = model1.predict(input_df)[0]
-
+    ai_advice = generate_ai_health_advice(
+        age=data.age,
+        bmi=data.bmi,
+        smoker=data.smoker,
+        occupation=data.occupation,
+        predicted_category=prediction
+    )
     new_prediction = model.Predictor(
         age=data.age,
         weight=data.weight,
@@ -262,7 +268,7 @@ def predict_premium(request: Request,data: User_input, current_user: User = Depe
     db.add(new_prediction)
     db.commit()
     db.refresh(new_prediction)
-    return JSONResponse(status_code=200, content={'predicted_category': prediction})
+    return JSONResponse(status_code=200, content={'predicted_category': prediction,'ai_clinical_advice': ai_advice})
 
 @app.get("/my-history", response_model=list[PredictionResponse])
 def get_my_history(

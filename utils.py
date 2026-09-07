@@ -136,3 +136,78 @@ def get_current_admin_user(current_user: User = Depends(get_current_user)) -> Us
         )
         
     return current_user # Valid Admin User Return Kar Diya
+
+
+# [FILE: utils.py]
+import os
+from groq import Groq
+
+# 1. Groq Client Initialize Kiya
+groq_client = Groq(api_key=os.getenv("GROQ_API_KEY"))
+
+
+def generate_ai_health_advice(
+    age: int, 
+    bmi: float, 
+    smoker: bool, 
+    occupation: str, 
+    predicted_category: str
+) -> str:
+    """
+    Groq API + System Prompt + Few-Shot Prompting For Health Advice
+    """
+    
+    # 🧠 A. SYSTEM PROMPT (AI Ka Role & Rules)
+    system_prompt = """
+    You are Chief Actuarial Medical Consultant at HealthGuard AI.
+    Your task is to analyze patient parameters and generate a strictly formatted 3-bullet clinical action plan.
+    You must maintain a professional, calm, data-driven medical tone.
+    """
+
+    # 🎓 B. FEW-SHOT PROMPTING (Examples for Exact Template)
+    messages = [
+        {"role": "system", "content": system_prompt},
+        
+        # 📝 EXAMPLE 1 (Input ➔ Expected Output)
+        {
+            "role": "user", 
+            "content": "Patient: Age 45, BMI 31.5, Smoker: True, Category: High"
+        },
+        {
+            "role": "assistant", 
+            "content": """
+1. Primary Clinical Risk: Class-1 Obesity combined with active nicotine intake significantly increases cardiovascular mortality.
+2. Actionable Intervention: Enroll in a structured nicotine cessation program and target a 5% BMI reduction within 90 days.
+3. Financial Impact: Achieving non-smoker status lowers insurance risk score from High to Medium category.
+            """
+        },
+        
+        # 📝 EXAMPLE 2 (Input ➔ Expected Output)
+        {
+            "role": "user", 
+            "content": "Patient: Age 22, BMI 21.0, Smoker: False, Category: Low"
+        },
+        {
+            "role": "assistant", 
+            "content": """
+1. Primary Clinical Risk: Minimal baseline risk. Optimal BMI and non-tobacco status.
+2. Actionable Intervention: Maintain current lifestyle with annual preventive health screenings and regular cardiovascular activity.
+3. Financial Impact: Patient qualifies for maximum preferred underwriting discounts.
+            """
+        },
+
+        # 🚀 ACTUAL USER INPUT (Jo Abhi Form Se Aaya Hai!)
+        {
+            "role": "user", 
+            "content": f"Patient: Age {age}, BMI {bmi:.1f}, Smoker: {smoker}, Occupation: {occupation}, Category: {predicted_category}"
+        }
+    ]
+
+    # 3. GROQ API CALL (Llama-3.3 Model)
+    completion = groq_client.chat.completions.create(
+        model="llama-3.3-70b-versatile",
+        messages=messages,
+        temperature=0.3  # Low temperature = Consistent & Precise output
+    )
+
+    return completion.choices[0].message.content
